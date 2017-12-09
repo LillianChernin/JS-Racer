@@ -6,10 +6,27 @@ body {
   background-color: blue;
   width: 100px;
   height: 50px;
+  margin-top: 200px;
+  margin-bottom: 50px;
 }
 
 #red-car {
   background-color: red;
   width: 100px;
   height: 50px;
+}
+.white-stripe {
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  position: fixed;
+  left: 1200px;
+}
+
+#top-stripe {
+  top: 200px;
+}
+
+#bottom-stripe {
+  top: 300px;
 }
