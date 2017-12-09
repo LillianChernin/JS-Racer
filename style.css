@@ -7,16 +7,17 @@ body {
   width: 100px;
   height: 50px;
   margin-top: 200px;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 
 #red-car {
   background-color: red;
   width: 100px;
   height: 50px;
+  margin-top: 25px;
 }
 .white-stripe {
-  height: 40px;
+  height: 35px;
   width: 40px;
   background-color: white;
   position: fixed;
@@ -24,9 +25,13 @@ body {
 }
 
 #top-stripe {
-  top: 200px;
+  top: 175px;
+}
+
+#middle-stripe {
+  top: 250px;
 }
 
 #bottom-stripe {
-  top: 300px;
+  top: 325px;
 }
