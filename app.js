@@ -4,9 +4,12 @@ const blueCar = document.getElementById('blue-car');
 
 const redCar = document.getElementById('red-car');
 
+const startButton = document.getElementById('start-button');
+const count = document.getElementById('count-down');
+
 let blueCarPos = 0;
 let redCarPos = 0;
-let finishLinePos = 1150;
+let finishLinePos = window.screen.width - 100;
 let blueCarScore = 0;
 let redCarScore = 0;
 
@@ -19,6 +22,7 @@ const resetRace = () => {
   redCarPos = 0;
   blueCar.setAttribute("style", "position: relative; left: " + blueCarPos + "px");
   redCar.setAttribute("style", "position: relative; left: " + redCarPos + "px");
+  document.getElementById("start-button").innerHTML = "Play Again";
   updateScore();
 }
 
@@ -65,4 +69,30 @@ const mobilizeCars = () => {
 
 }
 
-mobilizeCars();
+const countDown = () => {
+  setInterval(() => {
+    count.setAttribute("style", "left: " + (window.screen.width / 2) + "px; color: yellow");
+  }, 3000);
+  setInterval(() => {
+    count.innerHTML = "2";
+  }, 3000);
+  setInterval(() => {
+    count.innerHTML = "1";
+  }, 3000);
+  setInterval(() => {
+    count.innerHTML = "GO!!!";
+  }, 3000);
+  count.setAttribute("style", "color: transparent");
+}
+
+const adjustRaceTrack = () => {
+  document.getElementById('road').setAttribute("style", "width: " + window.screen.width + "px");
+  document.getElementById('finish-line').setAttribute("style", "left: " + finishLinePos + "px");
+}
+
+adjustRaceTrack();
+
+startButton.addEventListener('click', (event) = > {
+  countDown();
+  mobilizeCars();
+});
