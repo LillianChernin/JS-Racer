@@ -22,7 +22,6 @@ const resetRace = () => {
   redCarPos = 0;
   blueCar.setAttribute("style", "position: relative; left: " + blueCarPos + "px");
   redCar.setAttribute("style", "position: relative; left: " + redCarPos + "px");
-  document.getElementById("start-button").innerHTML = "Play Again";
   count.innerHTML = "3";
   updateScore();
 }
@@ -31,19 +30,24 @@ const checkAndAnnounceWinner = () => {
   if (redCarPos >= finishLinePos && blueCarPos >= finishLinePos) {
     if (redCarPos === blueCarPos) {
       alert("We have a tie!!!");
+      document.getElementById("start-button").innerHTML = "Play Again";
     } else if (redCarPos > blueCarPos) {
       alert("Red car won!! What a nail-biting finish!!");
       redCarScore++;
+      document.getElementById("start-button").innerHTML = "Play Again";
     } else if (blueCarPos > redCarPos) {
       alert("Blue car won!! What a nail-biting finish!!");
       blueCarScore++;
+      document.getElementById("start-button").innerHTML = "Play Again";
     }
   } else if (redCarPos >= finishLinePos) {
     alert("Red car is the WINNNER!!!");
     redCarScore++;
+    document.getElementById("start-button").innerHTML = "Play Again";
   } else if (blueCarPos >= finishLinePos) {
     alert("Blue car is the WINNER!!!");
     blueCarScore++;
+    document.getElementById("start-button").innerHTML = "Play Again";
   }
 }
 
