@@ -1,10 +1,10 @@
-console.log("JS working!");
 
 const blueCar = document.getElementById('blue-car');
 
 const redCar = document.getElementById('red-car');
 
 const startButton = document.getElementById('start-button');
+
 const count = document.getElementById('count-down');
 
 let blueCarPos = 0;
@@ -23,34 +23,27 @@ const resetRace = () => {
   blueCar.setAttribute("style", "position: relative; left: " + blueCarPos + "px");
   redCar.setAttribute("style", "position: relative; left: " + redCarPos + "px");
   document.getElementById("start-button").innerHTML = "Play Again";
+  count.innerHTML = "3";
   updateScore();
 }
-
-
-
 
 const checkAndAnnounceWinner = () => {
   if (redCarPos >= finishLinePos && blueCarPos >= finishLinePos) {
     if (redCarPos === blueCarPos) {
       alert("We have a tie!!!");
-      resetRace();
     } else if (redCarPos > blueCarPos) {
       alert("Red car won!! What a nail-biting finish!!");
       redCarScore++;
-      resetRace()
     } else if (blueCarPos > redCarPos) {
       alert("Blue car won!! What a nail-biting finish!!");
       blueCarScore++;
-      resetRace();
     }
   } else if (redCarPos >= finishLinePos) {
     alert("Red car is the WINNNER!!!");
     redCarScore++;
-    resetRace();
   } else if (blueCarPos >= finishLinePos) {
     alert("Blue car is the WINNER!!!");
     blueCarScore++;
-    resetRace();
   }
 }
 
@@ -59,6 +52,7 @@ const mobilizeCars = () => {
     if (event.key === "k") {
       blueCarPos = blueCarPos + 25;
       blueCar.setAttribute("style", "position: relative; left: " + blueCarPos + "px");
+      count.setAttribute("style", "color: transparent");
       checkAndAnnounceWinner();
     } else if (event.key === "s") {
       redCarPos = redCarPos + 25;
@@ -70,18 +64,18 @@ const mobilizeCars = () => {
 }
 
 const countDown = () => {
-  setInterval(() => {
+  setTimeout(() => {
     count.setAttribute("style", "left: " + (window.screen.width / 2) + "px; color: yellow");
-  }, 3000);
-  setInterval(() => {
+  }, 1000);
+  setTimeout(() => {
     count.innerHTML = "2";
-  }, 3000);
-  setInterval(() => {
+  }, 2000);
+  setTimeout(() => {
     count.innerHTML = "1";
   }, 3000);
-  setInterval(() => {
+  setTimeout(() => {
     count.innerHTML = "GO!!!";
-  }, 3000);
+  }, 4000);
   count.setAttribute("style", "color: transparent");
 }
 
@@ -92,7 +86,8 @@ const adjustRaceTrack = () => {
 
 adjustRaceTrack();
 
-startButton.addEventListener('click', (event) = > {
+startButton.addEventListener('click', (event) => {
+  resetRace();
   countDown();
   mobilizeCars();
 });
