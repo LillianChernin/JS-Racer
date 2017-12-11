@@ -1,14 +1,14 @@
 
-const blueCar = document.getElementById('blue-car');
-const redCar = document.getElementById('red-car');
+const playerOne = document.getElementById('player-one');
+const playerTwo = document.getElementById('player-two');
 const startButton = document.getElementById('start-button');
 const count = document.getElementById('count-down');
 
-let blueCarPos = 0;
-let redCarPos = 0;
+let playerOnePos = 0;
+let playerTwoPos = 0;
 let finishLinePos = window.screen.width - 100;
-let blueCarScore = 0;
-let redCarScore = 0;
+let playerOneScore = 0;
+let playerTwoScore = 0;
 
 //Adjust race track and finish line position to fit current window screen size
 document.getElementById('road').setAttribute("style", "width: " + window.screen.width + "px");
@@ -16,36 +16,34 @@ document.getElementById('finish-line').setAttribute("style", "left: " + finishLi
 //
 
 const updateScore = () => {
-  document.getElementById('score').innerHTML = "Blue score: " + blueCarScore + "  /  Red score: " + redCarScore;
+  document.getElementById('score').innerHTML = "Player 1: " + playerOneScore + "  /  Player 2: " + playerTwoScore;
 }
 
 const resetRace = () => {
-  blueCarPos = 0;
-  redCarPos = 0;
-  blueCar.setAttribute("style", "position: relative; left: " + blueCarPos + "px");
-  redCar.setAttribute("style", "position: relative; left: " + redCarPos + "px");
+  playerOnePos = 0;
+  playerTwoPos = 0;
+  playerOne.setAttribute("style", "position: relative; left: " + playerOnePos + "px");
+  playerTwo.setAttribute("style", "position: relative; left: " + playerTwoPos + "px");
   count.innerHTML = "3";
-  if (blueCarScore > 0 || redCarScore > 0) {
+  if (playerOneScore > 0 || playerTwoScore > 0) {
     document.removeEventListener('keypress');
+    startButton.innerHTML = "Play Again";
   }
 }
 
 const checkAndAnnounceWinner = () => {
-  if (redCarPos >= finishLinePos && blueCarPos >= finishLinePos && redCarPos === blueCarPos) {
+  if (playerOnePos >= finishLinePos && playerTwoPos >= finishLinePos && playerOnePos === playerTwoPos) {
     alert("We have a tie!!!");
-    document.getElementById("start-button").innerHTML = "Play Again";
-  } else if (redCarPos >= finishLinePos) {
-    alert("Red car is the WINNNER!!!");
-    redCarScore++;
+  } else if (playerOnePos >= finishLinePos) {
+    alert("Player 1 is the WINNNER!!!");
+    playerOneScore++;
     updateScore();
-    document.removeEventListener('keypress');
-    document.getElementById("start-button").innerHTML = "Play Again";
-  } else if (blueCarPos >= finishLinePos) {
-    alert("Blue car is the WINNER!!!");
-    blueCarScore++;
+    startButton.innerHTML = "Play Again";
+  } else if (playerTwoPos >= finishLinePos) {
+    alert("Player 2 is the WINNER!!!");
+    playerTwoScore++;
     updateScore();
-    document.removeEventListener('keypress');
-    document.getElementById("start-button").innerHTML = "Play Again";
+    startButton.innerHTML = "Play Again";
   }
 }
 
@@ -55,13 +53,13 @@ const checkAndAnnounceWinner = () => {
 const mobilizeCars = () => {
   document.addEventListener('keypress', (event) => {
     if (event.key === "k") {
-      blueCarPos = blueCarPos + 25;
-      blueCar.setAttribute("style", "position: relative; left: " + blueCarPos + "px");
+      playerOnePos = playerOnePos + 25;
+      playerOne.setAttribute("style", "position: relative; left: " + playerOnePos + "px");
       count.setAttribute("style", "color: transparent");
       checkAndAnnounceWinner();
-    } else if (event.key === "s") {
-      redCarPos = redCarPos + 25;
-      redCar.setAttribute("style", "position: relative; left: " + redCarPos + "px");
+    } else if (event.key === "a") {
+      playerTwoPos = playerTwoPos + 25;
+      playerTwo.setAttribute("style", "position: relative; left: " + playerTwoPos + "px");
       count.setAttribute("style", "color: transparent");
       checkAndAnnounceWinner();
     }

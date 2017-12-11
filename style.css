@@ -13,12 +13,14 @@ button {
   font-size: 20px;
 }
 
+
+
 #road {
   background-color: gray;
   height: 200px;
   width: 1275px;
   position: fixed;
-  top: 215px;
+  top: 250px;
   z-index: -1;
 }
 #finish-line {
@@ -32,7 +34,7 @@ button {
   padding-left: 8px;
 }
 
-#blue-car {
+#player-one {
   background-color: blue;
   width: 100px;
   height: 50px;
@@ -41,7 +43,7 @@ button {
   border-radius: 0px 15px 15px 0px;
 }
 
-#red-car {
+#player-two {
   background-color: red;
   width: 100px;
   height: 50px;
@@ -50,7 +52,7 @@ button {
 }
 
 #count-down {
-  font-size: 200px;
+  font-size: 300px;
   font-family: 'Bungee', cursive;
   color: transparent;
   z-index: 1;
